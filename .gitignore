@@ -3,3 +3,7 @@
 IPHeatmap/settings_local.py
 notes.txt
 /venv/
+_assets
+.DS_Store
+*.pid
+_logs

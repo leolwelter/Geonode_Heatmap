@@ -34,7 +34,7 @@ class GeoNodeViewset(viewsets.ReadOnlyModelViewSet):
 
     # queryset = GeoNode.objects.all()
     def get_queryset(self):
-        qs = GeoNode.objects.all()
+        qs = GeoNode.objects.all().order_by('id')
         logger.info('geonode queryset: {}'.format(qs.count()))
         return qs
 
