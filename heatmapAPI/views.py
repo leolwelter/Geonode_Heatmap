@@ -1,7 +1,7 @@
 from django.db.models import QuerySet
 from django_filters import rest_framework as filters
 from rest_framework import viewsets
-from rest_framework.pagination import PageNumberPagination
+from rest_framework.pagination import PageNumberPagination, LimitOffsetPagination
 
 from heatmapAPI.models import GeoNode
 from heatmapAPI.serializers import GeoNodeSerializer
@@ -22,10 +22,11 @@ class LookupFilterset(filters.FilterSet):
         fields = ['lat_min', 'lat_max', 'long_min', 'long_max']
 
 
-class StandardPagination(PageNumberPagination):
-    page_size = 200
-    page_query_param = 'page_size'
-    max_page_size = 250
+class StandardPagination(LimitOffsetPagination):
+    default_limit = 10000
+    max_limit = 30000
+    limit_query_param = 'limit'
+    template = None
 
 
 # be sure to set serializer_class and queryset

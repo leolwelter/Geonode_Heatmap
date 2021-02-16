@@ -1,3 +1,3 @@
 #!/bin/bash
 
-pkill -HUP -fl supervisor
+pkill -HUP -fl supervisord

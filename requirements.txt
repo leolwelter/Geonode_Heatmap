@@ -5,6 +5,7 @@ cloudpickle==1.6.0
 dask==2021.2.0
 distributed==2021.2.0
 Django==3.1.6
+django-cors-headers==3.7.0
 django-filter==2.4.0
 djangorestframework==3.12.2
 fsspec==0.8.5
