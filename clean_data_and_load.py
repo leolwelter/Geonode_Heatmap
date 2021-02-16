@@ -1,8 +1,9 @@
 import sys
 
 import dask.dataframe as dd
-from dask.diagnostics import progress
 import numpy as np
+from dask.diagnostics import progress
+from IPHeatmap.settings_local import DATABASES
 
 if __name__ == '__main__':
     columns = ['network', 'geoname_id', 'registered_country_geoname_id', 'represented_country_geoname_id',
@@ -19,7 +20,7 @@ if __name__ == '__main__':
     df = df.astype(dtype=types)  # "reduce resolution"
 
     print(df.head(100), df.dtypes, df.index, sep='\n')
-    uri = 'postgresql://geodatauser:password@localhost/geodata'
+    uri = 'postgresql://geodatauser:{}@localhost/geodata'.format(DATABASES.get('default').get('password'))
     with progress.ProgressBar():
         dd.to_sql(df, 'heatmapAPI_geonode', uri, if_exists='append', index=False, parallel=True)
     sys.exit(0)

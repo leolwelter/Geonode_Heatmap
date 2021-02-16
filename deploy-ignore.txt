@@ -1,0 +1,8 @@
+notes.txt
+venv
+data
+*.log
+*.crt
+*.key
+.idea
+__pycache__/
